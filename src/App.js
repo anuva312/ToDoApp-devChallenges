@@ -12,8 +12,8 @@ function App() {
   const [noCompletedTasks, setNoCompletedTasks] = useState(true);
 
   const deleteSingleTask = function (current_task) {
-    const _tasks = tasks.slice();
-    _tasks.splice(_tasks.findIndex((task) => task.id === current_task.id));
+    let _tasks = tasks.slice();
+    _tasks = _tasks.filter((task) => task.id !== current_task.id);
     setTasks(_tasks);
     console.log(_tasks);
     localStorage.setItem("toDoTasks", JSON.stringify(_tasks));
@@ -90,7 +90,7 @@ function App() {
         </button>
       </div>
       {!isCompletedSelected && (
-        <div className="add-task-container">
+        <form className="add-task-container">
           <input
             id="add-details"
             placeholder="add details"
@@ -103,7 +103,7 @@ function App() {
           >
             Add
           </button>
-        </div>
+        </form>
       )}
       <div className="tasks-list">
         {tasks
