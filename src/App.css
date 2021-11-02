@@ -44,27 +44,26 @@ button {
 }
 
 .add-task-container {
-  height: 56px;
   margin: 3% 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  /* margin-bottom: 16px; */
 }
 
 .input-details {
   width: 80%;
-  height: inherit;
+  height: 56px;
   border: 1px solid #bdbdbd;
   font: inherit;
   box-sizing: border-box;
   border-radius: 12px;
   padding: 2%;
+  margin: 2% 0;
 }
 
 .add-button {
-  width: 16%;
-  height: inherit;
+  min-width: 109px;
+  height: 56px;
   border: none;
   background: #2f80ed;
   box-shadow: 0px 2px 6px rgba(127, 177, 243, 0.4);
@@ -74,6 +73,11 @@ button {
   font-size: 14px;
   line-height: 17px;
   color: #ffffff;
+  margin: 2% 0;
+}
+
+.tasks-list {
+  margin: 2% 0;
 }
 
 .task-item {
@@ -88,7 +92,6 @@ button {
   cursor: pointer;
   border-radius: 4px;
   padding: 2% 0;
-  align-self: center;
 }
 
 .material-icons.blank-checkbox {
@@ -96,12 +99,11 @@ button {
   cursor: pointer;
   border-radius: 4px;
   padding: 2% 0;
-  align-self: center;
 }
 
 .item-desc {
   padding: 2% 1%;
-  align-self: center;
+  text-align: left;
 }
 
 .item-desc.task-completed {
@@ -140,4 +142,17 @@ button {
 .delete-all-button-text {
   align-self: center;
   padding: 0 2px;
+}
+
+@media screen and (max-width: 630px) {
+  .status-buttons {
+    width: inherit;
+  }
+  .add-task-container {
+    justify-content: space-around;
+  }
+  .input-details {
+    width: 100%;
+    margin: 2%;
+  }
 }
