@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useEffect } from "react/cjs/react.development";
 import "./App.css";
-
-// const tasksList = ;
 
 function App() {
   const [isAllSelected, setIsAllSelected] = useState(true);
@@ -10,8 +9,23 @@ function App() {
   const [tasks, setTasks] = useState(
     JSON.parse(localStorage.getItem("toDoTasks") || "[]")
   );
+  const [noCompletedTasks, setNoCompletedTasks] = useState(true);
 
-  console.log(tasks);
+  const deleteSingleTask = function (current_task) {
+    const _tasks = tasks.slice();
+    _tasks.splice(_tasks.findIndex((task) => task.id === current_task.id));
+    setTasks(_tasks);
+    console.log(_tasks);
+    localStorage.setItem("toDoTasks", JSON.stringify(_tasks));
+  };
+
+  const deleteAllTasks = function () {
+    let _tasks = tasks.slice();
+    _tasks = _tasks.filter((task) => !task.completed);
+    setTasks(_tasks);
+    console.log(_tasks);
+    localStorage.setItem("toDoTasks", JSON.stringify(_tasks));
+  };
 
   const toggleTaskStatus = function (current_task) {
     const _tasks = tasks.slice();
@@ -20,18 +34,22 @@ function App() {
     );
     setTasks(_tasks);
     localStorage.setItem("toDoTasks", JSON.stringify(_tasks));
-    // console.log(current_task, tasks);
   };
 
   const addTasks = function () {
-    const name = document.getElementById("add-details").value;
+    const input_element = document.getElementById("add-details");
+    const name = input_element.value;
     const _tasks = tasks.slice();
     name &&
       _tasks.push({ name, completed: false, id: new Date().getTime() }) &&
       localStorage.setItem("toDoTasks", JSON.stringify(_tasks));
     setTasks(_tasks);
-    // console.log(tasks);
+    input_element.value = null;
   };
+
+  useEffect(() => {
+    setNoCompletedTasks(!tasks.some((task) => task.completed));
+  }, [tasks]);
 
   return (
     <div className="App">
@@ -71,16 +89,22 @@ function App() {
           Completed
         </button>
       </div>
-      <div className="add-task-container">
-        <input
-          id="add-details"
-          placeholder="add details"
-          className="input-details"
-        ></input>
-        <button id="add-task" className="add-button" onClick={() => addTasks()}>
-          Add
-        </button>
-      </div>
+      {!isCompletedSelected && (
+        <div className="add-task-container">
+          <input
+            id="add-details"
+            placeholder="add details"
+            className="input-details"
+          ></input>
+          <button
+            id="add-task"
+            className="add-button"
+            onClick={() => addTasks()}
+          >
+            Add
+          </button>
+        </div>
+      )}
       <div className="tasks-list">
         {tasks
           ? tasks.map((task) => (
@@ -113,10 +137,30 @@ function App() {
                 >
                   {task.name}
                 </span>
+                {isCompletedSelected && task.completed && (
+                  <div
+                    className="delete-icon-container"
+                    onClick={() => deleteSingleTask(task)}
+                  >
+                    <span className="material-icons delete-icon">
+                      delete_outline
+                    </span>
+                  </div>
+                )}
               </div>
             ))
           : null}
       </div>
+      {!noCompletedTasks && isCompletedSelected && (
+        <button
+          id="delete-all"
+          className="delete-all-button"
+          onClick={() => deleteAllTasks()}
+        >
+          <span className="material-icons delete-icon">delete_outline</span>
+          <span className="delete-all-button-text">delete all</span>
+        </button>
+      )}
     </div>
   );
 }

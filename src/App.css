@@ -88,6 +88,7 @@ button {
   cursor: pointer;
   border-radius: 4px;
   padding: 2% 0;
+  align-self: center;
 }
 
 .material-icons.blank-checkbox {
@@ -95,6 +96,7 @@ button {
   cursor: pointer;
   border-radius: 4px;
   padding: 2% 0;
+  align-self: center;
 }
 
 .item-desc {
@@ -104,6 +106,7 @@ button {
 
 .item-desc.task-completed {
   text-decoration: line-through;
+  color: #333333;
 }
 
 .item-desc.task-completed.active-selected {
@@ -112,4 +115,29 @@ button {
 
 .item-desc.task-incomplete.completed-selected {
   display: none;
+}
+
+.delete-icon-container {
+  margin-left: auto;
+  padding: 2% 2px;
+  color: #bdbdbd;
+  cursor: pointer;
+}
+
+.material-icon.delete-icon {
+  align-self: center;
+}
+
+.delete-all-button {
+  padding: 1.5% 3%;
+  background: #eb5757;
+  border: none;
+  border-radius: 4px;
+  color: #ffffff;
+  display: flex;
+  float: right;
+}
+.delete-all-button-text {
+  align-self: center;
+  padding: 0 2px;
 }
