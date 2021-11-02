@@ -48,7 +48,7 @@ function App() {
   };
 
   useEffect(() => {
-    setNoCompletedTasks(!tasks.some((task) => task.completed));
+    setNoCompletedTasks(!tasks?.some((task) => task.completed));
   }, [tasks]);
 
   return (
