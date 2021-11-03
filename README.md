@@ -16,4 +16,10 @@ Fulfill user stories below:
 
 ## Solution
 
-In Progress
+Find the site in action [here](https://devchallenges.io/solutions/QATkoxcCBbAlCNjfh2i0)!
+
+### Note:
+
+- Stores the data on local storage so that progress is retained on refresh
+- Initially no tasks will be found, start adding tasks to use the App
+- The "delete all" button will only be visible if completed tasks are present
