@@ -14,7 +14,6 @@ function App() {
     let _tasks = tasks.slice();
     _tasks = _tasks.filter((task) => task.id !== current_task.id);
     setTasks(_tasks);
-    console.log(_tasks);
     localStorage.setItem("toDoTasks", JSON.stringify(_tasks));
   };
 
@@ -22,7 +21,6 @@ function App() {
     let _tasks = tasks.slice();
     _tasks = _tasks.filter((task) => !task.completed);
     setTasks(_tasks);
-    console.log(_tasks);
     localStorage.setItem("toDoTasks", JSON.stringify(_tasks));
   };
 
