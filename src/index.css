@@ -11,3 +11,9 @@
   color: #a9a9a9;
   position: fixed;
 }
+
+.footer > a {
+  text-decoration: underline;
+  font-weight: bold;
+  color: inherit;
+}
