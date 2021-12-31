@@ -33,7 +33,8 @@ function App() {
     localStorage.setItem("toDoTasks", JSON.stringify(_tasks));
   };
 
-  const addTasks = function () {
+  const addTasks = function (e) {
+    e.preventDefault();
     const input_element = document.getElementById("add-details");
     const name = input_element.value;
     const _tasks = tasks.slice();
@@ -96,7 +97,7 @@ function App() {
           <button
             id="add-task"
             className="add-button"
-            onClick={() => addTasks()}
+            onClick={(e) => addTasks(e)}
           >
             Add
           </button>
