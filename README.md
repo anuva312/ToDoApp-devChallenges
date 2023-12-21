@@ -1,6 +1,6 @@
 # ToDoApp
 
-An Application created as a solution for the [ToDoApp Challenge](https://devchallenges.io/challenges/hH6PbOHBdPm6otzw2De5) from [Devchallenges.io](https://devchallenges.io).
+An Application created as a solution for the [ToDoApp Challenge](https://legacy.devchallenges.io/challenges/hH6PbOHBdPm6otzw2De5) from [Devchallenges.io](https://legacy.devchallenges.io).
 
 <!-- TABLE OF CONTENTS -->
 
